@@ -8,6 +8,7 @@
 import React, {useState} from 'react';
 import Greeting from './components/Greeting';
 import Box from './components/Box';
+import Counter from './components/Counter';
 
 import {
   SafeAreaView,
@@ -55,39 +56,21 @@ const Section = ({children, title}) => {
 };
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-  const [visible, setVisible] = useState(true);
-  // const name = 'JSX';
-  const onPress = () => {
-    setVisible(!visible);
-  };
+  const [count, setCount] = useState(0);
+
+  const increase = () => setCount(count + 1);
+  const decrease = () => setCount(count - 1);
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <Button title="토글" onPress={onPress} />
-      {visible ? <Box rounded={true} size="large" color="green" /> : null}
+    <SafeAreaView style={styles.full}>
+      <Counter count={count} onIncrease={increase} onDecrease={decrease} />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  full: {
+    flex: 1,
   },
 });
 
