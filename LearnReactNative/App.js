@@ -5,8 +5,7 @@
  * @format
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React, {useState} from 'react';
 import Greeting from './components/Greeting';
 import Box from './components/Box';
 
@@ -18,6 +17,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
 
 import {
@@ -28,9 +28,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
+const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -61,12 +59,15 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-  const name = 'JSX';
-
+  const [visible, setVisible] = useState(true);
+  // const name = 'JSX';
+  const onPress = () => {
+    setVisible(!visible);
+  };
   return (
     <SafeAreaView style={backgroundStyle}>
-      {/* <Greeting name={name} /> */}
-      <Box />
+      <Button title="토글" onPress={onPress} />
+      {visible ? <Box rounded={true} size="large" color="green" /> : null}
     </SafeAreaView>
   );
 };
