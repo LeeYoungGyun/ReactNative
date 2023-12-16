@@ -12,6 +12,8 @@ import {
   Text,
   useColorScheme,
   View,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -24,6 +26,7 @@ import Empty from './components/Empty';
  * LTI update could not be added via codemod */
 const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -54,9 +57,13 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaView edges={['bottom']} style={styles.block}>
-        <DateHead date={today} />
-        <Empty />
-        <AddTodo />
+        <KeyboardAvoidingView
+          behavior={Platform.select({ios: 'padding', android: undefined})} // 현재 사용중인 OS에 따라 다르게 설정
+          style={styles.avoid}>
+          <DateHead date={today} />
+          <Empty />
+          <AddTodo />
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -66,6 +73,9 @@ const styles = StyleSheet.create({
   block: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  avoid: {
+    flex: 1,
   },
 });
 
