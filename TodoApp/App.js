@@ -22,6 +22,7 @@ import DateHead from './components/DateHead';
 import AddTodo from './components/AddTodo';
 import Empty from './components/Empty';
 import TodoList from './components/TodoList';
+import AsyncStorage from '@react-native-community/async-storage';
 import todosStorage from './storages/todosStorages';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
