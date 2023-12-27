@@ -1,55 +1,36 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {View, Text, Button} from 'react-native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
-const HomeScreen = ({navigation}) => {
-  return (
-    <View>
-      <Text>Home</Text>
-      <Button title="Drawer 열기" onPress={() => navigation.openDrawer()} />
-      <Button
-        title="Setting 열기"
-        onPress={() => navigation.navigate('Setting')}
-      />
-    </View>
-  );
+const HomeScreen = () => {
+  return <Text>Home</Text>;
 };
 
-const SettingScreen = ({navigation}) => {
-  return (
-    <View>
-      <Text>Setting</Text>
-      <Button title="뒤로가기" onPress={() => navigation.goBack()} />
-    </View>
-  );
+const SearchScreen = () => {
+  return <Text>Search</Text>;
+};
+
+const NotificationScreen = () => {
+  return <Text>Notification</Text>;
+};
+
+const MessageScreen = () => {
+  return <Text>Message</Text>;
 };
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerPosition="left"
-        backBehavior="history"
-        screenOptions={{
-          drawerActiveBackgroundColor: '#fb8c00',
-          drawerActiveTintColor: 'white',
-        }}>
-        <Drawer.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{title: '홈'}}
-        />
-
-        <Drawer.Screen
-          name="Setting"
-          component={SettingScreen}
-          options={{title: '설정'}}
-        />
-      </Drawer.Navigator>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="Notification" component={NotificationScreen} />
+        <Tab.Screen name="Message" component={MessageScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
