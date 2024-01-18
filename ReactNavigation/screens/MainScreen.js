@@ -1,20 +1,38 @@
-import React from 'react';
+import React, {useEffect, useCallback} from 'react';
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {View, Text, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation, useFocusEffect} from '@react-navigation/native';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const HomeScreen = ({navigation}) => {
+const OpenDetailButton = () => {
+  const navigation = useNavigation();
+
+  return (
+    <Button
+      title="Detail 1 열기"
+      onPress={() => navigation.push('Detail', {id: 1})}
+    />
+  );
+};
+
+const HomeScreen = () => {
+  useFocusEffect(
+    useCallback(() => {
+      console.log('이 화면을 보고 있어요.');
+      return () => {
+        console.log('다른 화면으로 넘어갔어요');
+      };
+    }, []),
+  );
+
   return (
     <View>
       <Text>Home</Text>
-      <Button
-        title="Detail 1 열기"
-        onPress={() => navigation.push('Detail', {id: 1})}
-      />
+      <OpenDetailButton />
     </View>
   );
 };
