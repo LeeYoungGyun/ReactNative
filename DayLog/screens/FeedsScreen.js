@@ -1,16 +1,11 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import LogContext from '../contexts/LogContext';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 
 const FeedsScreen = () => {
-  const value = useContext(LogContext);
-  return (
-    <View style={styles.block}>
-      <Text>{value}</Text>
-    </View>
-  );
+  return <View style={styles.block} />;
 };
-
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  block: {},
+});
 
 export default FeedsScreen;
