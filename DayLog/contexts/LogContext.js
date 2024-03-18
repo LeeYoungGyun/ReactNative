@@ -1,10 +1,10 @@
-import React from 'react';
-import {createContext, useState} from 'react';
+import React, {createContext, useState} from 'react';
 
 const LogContext = createContext();
 
-const LogContextProvider = ({children}) => {
+export const LogContextProvider = ({children}) => {
   const [text, setText] = useState('');
+
   return (
     <LogContext.Provider value={{text, setText}}>
       {children}
@@ -12,4 +12,4 @@ const LogContextProvider = ({children}) => {
   );
 };
 
-export default LogContextProvider;
+export default LogContext;
