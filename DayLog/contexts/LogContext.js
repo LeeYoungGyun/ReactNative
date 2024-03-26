@@ -1,12 +1,13 @@
-import React, {createContext, useState} from 'react';
+import React from 'react'; 
+import {createContext, useState} from 'react';
 
 const LogContext = createContext();
 
 export const LogContextProvider = ({children}) => {
-  const [text, setText] = useState('');
+  const [logs, setLogs] = useState([]);
 
   return (
-    <LogContext.Provider value={{text, setText}}>
+    <LogContext.Provider value={logs}>
       {children}
     </LogContext.Provider>
   );
