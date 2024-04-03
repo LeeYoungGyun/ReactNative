@@ -11,13 +11,14 @@ const MainTab = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        showLabel: false,
-        activeTintColor: '#009688',
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: '#009688',
       }}>
       <Tab.Screen
         name="Feeds"
         component={FeedsScreen}
         options={{
+          title: '피드',
           tabBarIcon: ({color, size}) => (
             <Icon name="view-stream" size={size} color={color} />
           ),
@@ -27,6 +28,7 @@ const MainTab = () => {
         name="Calendar"
         component={CalendarScreen}
         options={{
+          title: '달력',
           tabBarIcon: ({color, size}) => (
             <Icon name="event" size={size} color={color} />
           ),
@@ -36,6 +38,7 @@ const MainTab = () => {
         name="Search"
         component={SearchScreen}
         options={{
+          title: '검색',
           tabBarIcon: ({color, size}) => (
             <Icon name="search" size={size} color={color} />
           ),

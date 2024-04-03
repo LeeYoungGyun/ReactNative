@@ -1,8 +1,7 @@
-import { useNavigation } from "@react-navigation/core";
-import React from "react";
-import { Pressable, StyleSheet, View } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import TransparentCircleButton from "./TransparentCircleButton";
+import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import TransparentCircleButton from './TransparentCircleButton';
 
 const WriteHeader = ({onSave}) => {
    const navigation = useNavigation();

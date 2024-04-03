@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import WriteHeader from '../components/WriteHeader';
@@ -11,12 +11,12 @@ const WriteScreen = () => {
   const [body, setBody] = useState('');
   const navigation = useNavigation();
 
-  const {onCreate} = React.useContext(LogContext);
+  const {onCreate} = useContext(LogContext);
   const onSave = () => {
     onCreate({
       title,
       body,
-      date: new Date().toISOString(),
+      date: new Date().toISOString(), // / 날짜를 문자열로 변환
     });
     navigation.pop();
   };
